@@ -13,9 +13,11 @@ Author: ChatGPT + Angeliu Gamer
 import os
 import sys
 
-from lexer import Lexer
-from parser import Parser
-from generator import Generator
+from src.lexer import Lexer
+from src.parser import Parser
+from src.generator import Generator
+from src.ast import *
+from src.rules import RuleEngine
 
 
 VERSION = "0.1.0"

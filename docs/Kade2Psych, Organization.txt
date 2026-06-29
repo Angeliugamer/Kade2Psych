@@ -1,19 +1,29 @@
 Kade2Psych/
+├── docs/
+│   ├── Kade2Psych, Organization.txt
+│   ├── mod-backend.lua                       <Kade Modchart a Convertir>
+│   └── modchart.lua                          <Kade Modchart main a Convertir>
 │
-├── main.py
-├── lexer.py              <-- Convierte texto -> tokens
-├── parser.py             <-- Tokens -> AST
-├── ast.py                <-- Nodos del AST
-├── rules.py
-├── easings.py
-├── backend.py
-├── generator.py
-├── utils.py
+├── examples/
+│
+├── src/
+│   ├── ast.py                
+│   ├── lexer.py              ← Scanner (solo tokens)
+│   ├── parser.py             ← AST Lua
+│   ├── rules.py              ← AST Lua → AST Kade
+│   ├── generator.py          ← AST Kade → Psych
+│   ├── backend.py
+│   ├── easings.py
+│   └── utils.py
 │
 ├── templates/
 │   ├── psych_backend.lua
 │   └── helpers.lua
 │
+├── tests/
+│
+├── .gitignore
+├── main.py
 └── README.md
 
 
@@ -30,16 +40,25 @@ Kade2Psych/
              parser.py
                  │
                  ▼
+              AST Lua
+                 │
+                 ▼
+         Semantic Analyzer
+                 │
+                 ▼
+             IR (Kade)
+                 │
+                 ▼
             Optimizer.py
                  │
                  ▼
         abstract syntax tree
                  │
-   ┌─────────┴─────────┐
-   ▼                          ▼
-rules.py                   easings.py
-   │                          │
-   └─────────┬─────────┘
+       ┌─────────┴─────────┐
+       ▼                   ▼
+    rules.py           easings.py
+       │                   │
+       └─────────┬─────────┘
                  ▼
             generator.py
                  │
@@ -53,9 +72,11 @@ rules.py                   easings.py
 
 
 
-Toda la inteligencia estará repartida en los demás archivos
+Toda la inteligencia estará repartida en los archivos
 
-lexer.py: Solo convierte texto en tokens.
+ast.py (define todos los nodos del compilador).
+
+lexer.py produze esos nodos de forma coherente.
 
 parser.py: Entiende el Lua.
 
@@ -66,3 +87,24 @@ y Que set{} es un Set.
 Que mpf{} es un Frame Event.
 
 generator.py: Escribe el Lua de Psych.
+
+
+
+
+
+          Lua
+           │
+           ▼
+     Scanner (tokens)
+           │
+           ▼
+    Parser (AST Kade)
+           │
+           ▼
+   Semantic Analyzer
+           │
+           ▼
+ Rule Converter Engine
+           │
+           ▼
+ Psych Code Generator
