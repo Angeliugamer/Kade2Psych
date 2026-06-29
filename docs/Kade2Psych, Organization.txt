@@ -1,0 +1,68 @@
+Kade2Psych/
+│
+├── main.py
+├── lexer.py              <-- Convierte texto -> tokens
+├── parser.py             <-- Tokens -> AST
+├── ast.py                <-- Nodos del AST
+├── rules.py
+├── easings.py
+├── backend.py
+├── generator.py
+├── utils.py
+│
+├── templates/
+│   ├── psych_backend.lua
+│   └── helpers.lua
+│
+└── README.md
+
+
+
+
+
+             Kade2Psych
+      modchart.lua + backend.lua
+                 │
+                 ▼
+              lexer.py
+                 │
+                 ▼
+             parser.py
+                 │
+                 ▼
+            Optimizer.py
+                 │
+                 ▼
+        abstract syntax tree
+                 │
+   ┌─────────┴─────────┐
+   ▼                          ▼
+rules.py                   easings.py
+   │                          │
+   └─────────┬─────────┘
+                 ▼
+            generator.py
+                 │
+                 ▼
+        psych_backend.lua
+                 │
+                 ▼
+         modchart_psych.lua
+
+
+
+
+
+Toda la inteligencia estará repartida en los demás archivos
+
+lexer.py: Solo convierte texto en tokens.
+
+parser.py: Entiende el Lua.
+
+rules.py: Sabe que me{} es un Tween.
+
+y Que set{} es un Set.
+
+Que mpf{} es un Frame Event.
+
+generator.py: Escribe el Lua de Psych.
