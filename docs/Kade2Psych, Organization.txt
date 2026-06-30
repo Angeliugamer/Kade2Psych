@@ -7,12 +7,14 @@ Kade2Psych/
 ├── examples/
 │
 ├── src/
-│   ├── ast.py                
-│   ├── lexer.py              ← Scanner (solo tokens)
-│   ├── parser.py             ← AST Lua
-│   ├── rules.py              ← AST Lua → AST Kade
-│   ├── generator.py          ← AST Kade → Psych
+│   ├── ast.py                ✔
+│   ├── lexer.py              ✔    ← Scanner (solo tokens)
+│   ├── parser.py                   ← AST Lua
+│   ├── semantic.py
+│   ├── ir.py
+│   ├── rules.py                    ← AST Lua → AST Kade
 │   ├── backend.py
+│   ├── generator.py                ← AST Kade → Psych
 │   ├── easings.py
 │   └── utils.py
 │
