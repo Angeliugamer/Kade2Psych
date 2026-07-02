@@ -1,22 +1,31 @@
 Kade2Psych/
 ├── docs/
 │   ├── Kade2Psych, Organization.txt
+│   ├── COMPILER_CHECKLIST.md
 │   ├── mod-backend.lua                       <Kade Modchart a Convertir>
 │   └── modchart.lua                          <Kade Modchart main a Convertir>
 │
 ├── examples/
 │
 ├── src/
-│   ├── ast.py                ✔
-│   ├── lexer.py              ✔    ← Scanner (solo tokens)
-│   ├── parser.py                   ← AST Lua
-│   ├── semantic.py
-│   ├── ir.py
-│   ├── rules.py                    ← AST Lua → AST Kade
-│   ├── backend.py
-│   ├── generator.py                ← AST Kade → Psych
-│   ├── easings.py
-│   └── utils.py
+│   ├── ast.py                ✔    Árbol sintáctico (Lua)
+│   ├── ast_builder.py        ⏳   
+│   ├── lexer.py              ✔    Scanner → Tokens
+│   ├── parser.py             ⏳   Tokens → AST Lua
+│   │
+│   ├── transformer.py        ⏳   AST Lua → AST Kade
+│   ├── semantic.py           ⏳   Validaciones, scopes, tipos, constantes
+│   ├── ir.py                 ⏳   Representación intermedia
+│   │
+│   ├── rules.py              ⏳   Reglas de transformación
+│   ├── easings.py            ✔    Base de datos de easings
+│   │
+│   ├── backend.py            ⏳   Backend Psych Engine
+│   ├── generator.py          ⏳   Generador de Lua final
+│   │
+│   ├── diagnostics.py        ⏳   
+│   ├── visitor.py            ⏳   
+│   └── utils.py              ✔    Utilidades generales
 │
 ├── templates/
 │   ├── psych_backend.lua
@@ -110,3 +119,9 @@ generator.py: Escribe el Lua de Psych.
            │
            ▼
  Psych Code Generator
+
+
+
+
+
+

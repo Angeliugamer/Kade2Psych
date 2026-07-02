@@ -132,7 +132,7 @@ class Literal(Expression):
 
 @dataclass(slots=True)
 class NumberLiteral(Literal):
-
+    
     value: float
 
 
@@ -155,6 +155,34 @@ class NilLiteral(Literal):
     """
 
     pass
+
+# =========================================================
+# VARARGS
+# =========================================================
+
+@dataclass(slots=True)
+class VarArgExpression(Expression):
+    """
+    Representa el operador "..." de Lua.
+    """
+
+    pass
+
+# =========================================================
+# PARENTHESIZED EXPRESSION
+# =========================================================
+
+@dataclass(slots=True)
+class ParenthesizedExpression(Expression):
+    """
+    Conserva los paréntesis originales del código.
+
+    Aunque semánticamente "(a+b)" sea igual a "a+b",
+    este nodo permite reconstruir exactamente el código
+    fuente si es necesario.
+    """
+
+    expression: Expression
 
 # =========================================================
 # IDENTIFIER
@@ -387,6 +415,22 @@ class BreakStatement(Statement):
     """
 
     pass
+
+# =========================================================
+# DO STATEMENT
+# =========================================================
+
+@dataclass(slots=True)
+class DoStatement(Statement):
+    """
+    Representa un bloque:
+
+    do
+        ...
+    end
+    """
+
+    body: List[Statement] = field(default_factory=list)
 
 # =========================================================
 # CONTINUE
